@@ -1,17 +1,43 @@
-#src/protein_powder.py
+# protein_powder.py
+#
+# Author: Ben Aylward
+# Email: baylward@uwaterloo.ca
+# Student ID: 20945379 
+# MSE240: Assignment 1
+# Source code for ProteinPowder Class
 
-#class design 
 
-#baylward@uwaterloo.ca
-#20945379
 
 class ProteinPowder:
-    def __init__(self, _brand:str, _flavour: str, _price: float, _is_vegan:bool, 
+    """ProteinPowder
+        A class for an object: a tub of Protein Powder, for an online store
+     """
+    
+    #Class Constants (THESE DO NOT CHANGE PER OBJECT)
+
+    _AVALIBLE_BRANDS = {'Diesel','Biox', 'Raw', 'PVL','Ghost','Mutant'}
+    _AVALIBLE_FLAVOURS = {'Peanut Butter', 'Vanilla', 'Chocolate', 'Cookies & Cream'}
+
+    #Initialization of the object
+    
+    def __init__(self, _brand:str, _flavour: str, is_vegan: bool, 
                  _protein_per_serving_grams: float, _carbs_per_serving_grams: float, 
-                 _fats_per_serving_grams: float, _calories_per_serving:int ):
+                 _fats_per_serving_grams: float, _calories_per_serving:int, 
+                 _price: float =49.99 ):
+        """
+        _brand: The brand of protein powder (must be in _AVALIBLE_BRANDS)
+        _flavour: The flavour of protein powder (must be in _AVALIBLE_FLAVOURS)
+        _price: The price of the tub of protein powder in $ CAD, defaults to 49.99 unless specifed (on sale)
+        _is_vegan: booloan specifiyng if the proetiun powder is vegan 
+        _protein_per_serving_grams: the amount of protein in a single serving, in grams
+        _carbs_per_serving_grams: the amount of carbs in a single serving, in grams
+        _fats_per_serving_grams: the amount of fats in a single serving, in grams
+        _calories_per_serving: the amount of calories in a single serving, in kcals
+        """
+
         pass
 
-#Accessors: 
+#Accessors: See Test Plan and Specification Doc for details 
     def get_name(self):
         pass
 
@@ -39,15 +65,15 @@ class ProteinPowder:
     def get_calories_per_serving(self):
         pass
 
-    def get_avalible_flavours(self):
+    def get__AVALIBLE_FLAVOURS(self):
         pass
 
-    def get_avalible_flavours(self):
+    def get_AVALIBLE_BRANDS(self):
         pass
 
 
 
-#Mutators: 
+#Mutators: See Test Plan and Specification Doc for details 
 
     def set_brand(self, new_brand:str):
         pass
@@ -73,7 +99,7 @@ class ProteinPowder:
     def set_calories_per_serving(self, kcal:int):
         pass
 
-#Calculated Accessors
+#Calculated Accessors: See Test Plan and Specification Doc for details 
 
     def get_calories_from_macros(self):
         pass
