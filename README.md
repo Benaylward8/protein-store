@@ -1,7 +1,6 @@
 # Protein Store
 
-# Docs 
-- [Part 1 Test Plan and Specifications](/Users/benaylward/Documents/MSE240 Assignment 1 – Part 1 Test Plan and Specifications.docx)
+# Docs Folder
 
-- Code in /src
-- Tests in /tests
+- [Assignment 1 Specification and Test Plan](docs/Assignment1_Spec.docx)
+
