@@ -20,7 +20,7 @@ class ProteinPowder:
 
     #Initialization of the object
     
-    def __init__(self, _brand:str, _flavour: str, is_vegan: bool, 
+    def __init__( self, _brand:str, _flavour: str, _is_vegan: bool, 
                  _protein_per_serving_grams: float, _carbs_per_serving_grams: float, 
                  _fats_per_serving_grams: float, _calories_per_serving:int, 
                  _price: float =49.99 ):
@@ -34,7 +34,6 @@ class ProteinPowder:
         _fats_per_serving_grams: the amount of fats in a single serving, in grams
         _calories_per_serving: the amount of calories in a single serving, in kcals
         """
-
         pass
 
 #Accessors: See Test Plan and Specification Doc for details 
