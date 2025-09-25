@@ -6,7 +6,7 @@
 # MSE240: Assignment 1
 # Source code for ProteinPowder Class
 
-from protein_powder import ProteinPowder
+from src.protein_powder import ProteinPowder
 import unittest
 
 class TestProteinPowder(unittest.TestCase):
@@ -27,41 +27,34 @@ class TestProteinPowder(unittest.TestCase):
 
         """
         #Typical1: Creating a valid ProteinPowder object
-        #Note that the brand and flavour must be in the _AVALIBLE_BRANDS and _AVALIBLE_FLAVOURS
-
-        self._typical1_data = {
-            "_brand": "Diesel",
-            "_flavour":"Peanut Butter",
-            "_price": 49.99, # Default price (optinal)
-            "_is_vegan": False,
-            "_protein_per_serving_grams": 25.0,
-            "_carbs_per_serving_grams": 2.0,
-            "_fats_per_serving_grams": 1.5,
-            "_calories_per_serving": 121
-            }
+        #Note that the brand and flavour must be in the _AVALIBLE_BRANDS and _AVALIBLE_FLAVOURS set
         
-        self._typical1 = ProteinPowder(
-            _brand = self._typical1_data["_brand"],
-            _flavour = self._typical1_data["_flavour"],
-            _is_vegan = self._typical1_data ["_is_vegan"],
-            _price = self._typical1_data ["_price"],
-            protein_per_serving_grams = self._typical1_data["_protein_per_serving_grams"],
-            _carbs_per_serving_grams = self._typical1_data["_carbs_per_serving_grams"],
-            _fats_per_serving_grams = self._typical1_data[ "_fats_per_serving_grams"],
-            _calories_per_serving = self._typical1_data[ "_calories_per_serving"]
-        )
+        self._typical1 = ProteinPowder("Diesel","Peanut Butter",False, 25.0, 2.0, 1.5, 121, 49.99)
+            
 
 
-    """"
+    
+    def test_constructor(self):
+        """"
 
     Constructor Test for Typical Scenario 
 
-    """
-    def test_constructor(self): 
+    Unit: __Init__
+    Category: Typical
+    Input: 
+            _brand: "Diesel",
+            _flavour:"Peanut Butter",
+            _is_vegan: False,
+            _protein_per_serving_grams: 25.0,
+            _carbs_per_serving_grams: 2.0,
+            _fats_per_serving_grams: 1.5,
+            _calories_per_serving: 121
+            _price: 49.99
+
+    """ 
         typical1 = self._typical1
 
         self.assertIsNotNone(typical1) #checking if typical1 has any data
-        self.assertEqual(typical1, ProteinPowder)
 
         expected_name = f"{self._typical1_data['_brand']} {self._typical1_data['_flavour']}"
 

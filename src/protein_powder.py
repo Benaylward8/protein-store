@@ -9,9 +9,10 @@
 
 
 class ProteinPowder:
-    """ProteinPowder
-        A class for an object: a tub of Protein Powder, for an online store
-     """
+    """
+    ProteinPowder
+    A class for an object: a tub of Protein Powder, for an online store
+    """
     
     #Class Constants (THESE DO NOT CHANGE PER OBJECT)
 
@@ -27,12 +28,12 @@ class ProteinPowder:
         """
         _brand: The brand of protein powder (must be in _AVALIBLE_BRANDS)
         _flavour: The flavour of protein powder (must be in _AVALIBLE_FLAVOURS)
-        _price: The price of the tub of protein powder in $ CAD, defaults to 49.99 unless specifed (on sale)
         _is_vegan: booloan specifiyng if the proetiun powder is vegan 
         _protein_per_serving_grams: the amount of protein in a single serving, in grams
         _carbs_per_serving_grams: the amount of carbs in a single serving, in grams
         _fats_per_serving_grams: the amount of fats in a single serving, in grams
         _calories_per_serving: the amount of calories in a single serving, in kcals
+        _price: The price of the tub of protein powder in $ CAD, defaults to 49.99 unless specifed (on sale)
         """
         pass
 
