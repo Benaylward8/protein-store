@@ -324,3 +324,4 @@ class TestProteinPowder(unittest.TestCase):
         with self.assertRaises(ValueError):
             ProteinPowder("Diesel","Peanut Butter",False,0,2.0,1.5,121,50)
     
+    
