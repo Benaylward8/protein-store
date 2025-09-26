@@ -211,4 +211,116 @@ class TestProteinPowder(unittest.TestCase):
             #These Macros are not within 10% of the calories 
             #(4cals per g of protein, 4cals per. gram of carbs, 9cals per gram of fats)
     
+    def test_constructor_unusual_calories_10_percent_upper(self):
+            """
+                Unusual case: calories are at the 10% upper boundary.
+                 Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 25.0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 134
+                    _price: 49.99
+                    
+                Output: passes
+            """
+            unusual1 = ProteinPowder("Diesel","Peanut Butter",False,25.0,2.0,1.5,134,49.99)
+            self.assertEqual(unusual1.get_calories_per_serving(),134)
+  
+    def test_constructor_error_calories_10_percent_over_upper(self):
+            """
+                Error case: calories are past the 10% upper boundary.
+                 Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 25.0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 140
+                    _price: 49.99
+                    
+                Output: raises valueerror
+            """
+            with self.assertRaises(ValueError):
+                ProteinPowder("Diesel","Peanut Butter",False,25.0,2.0,1.5,140,49.99)
+            
+
+    def test_calculated_accessor_get_calories_from_macros_typical(self):
+        """Tests calculated accessor with a proetin,carb,fat calorie input that equals the calories inputted (allowing 10% variance)
+        Category: Typical
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 25.0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 121
+                    _price: 49.99
+
+            Output: get_calories_from_macros() returns 121 (rounded)
+            """
+        typical2 = ProteinPowder("Diesel","Peanut Butter",False,25.0,2.0,1.5,121,49.99)
+
+        macros_from_calories = typical2.get_calories_from_macros()
+        self.assertEqual(macros_from_calories, 122)
+    
+    def test_calculated_accessor_get_calories_from_macros_typical(self):
+        """Tests calculated accessor with a proetin,carb,fat calorie input that equals the calories inputted (allowing 10% variance)
+        Category: Typical
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 25.0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 121
+                    _price: 49.99
+
+            Output: get_calories_from_macros() returns 122 (rounded)
+            """
+        typical2 = ProteinPowder("Diesel","Peanut Butter",False,25.0,2.0,1.5,121,49.99)
+
+        
+        self.assertEqual(typical2.get_calories_from_macros(), 122)
+
+    def test_calculated_accessors_get_price_per_gram_protein(self):
+        """Tests calculated accessor with a typical proetin input 
+        Category: typical
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 25.0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 121
+                    _price: 50
+
+            Output: _get_price_per_gram_protein returns 1.9996 $/g
+            """
+        typical3 = ProteinPowder("Diesel","Peanut Butter",False,25.0,2.0,1.5,121,50)
+        self.assertEqual(typical3.get_price_per_gram_protein(),2.0)
+
+    def test_calculated_accessors_get_price_per_gram_protein_error(self):
+        """Tests calculated accessor with a protein input that raises error
+        Case: Error
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 121
+                    _price: 50
+
+            Output: _get_price_per_gram_protein returns 1.9996 $/g
+            """
+        with self.assertRaises(ValueError):
+            ProteinPowder("Diesel","Peanut Butter",False,0,2.0,1.5,121,50)
     

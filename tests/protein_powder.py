@@ -61,14 +61,14 @@ class ProteinPowder:
         
         #checking to see if the macros add up to within 10% of the calories (allowing for nutrition label varience) 
         macros = (_protein_per_serving_grams*4)+(_carbs_per_serving_grams*4)+(_fats_per_serving_grams*9)
-        lower_threshold = round(macros*0.9)
-        upper_threshold = round(macros*1.1)
-        
+        lower_threshold = int(round(macros*0.9))
+        upper_threshold = int(round(macros*1.1))
+
         if _calories_per_serving > upper_threshold:
-            raise ValueError
+            raise ValueError("Calories and Macronutrient do not match")
         
         if _calories_per_serving < lower_threshold: 
-            raise ValueError
+            raise ValueError("Calories and Macronutrient do not match")
 
         self._brand  = _brand
         self._flavour = _flavour
@@ -152,7 +152,10 @@ class ProteinPowder:
 #Calculated Accessors: See Test Plan and Specification Doc for details 
 
     def get_calories_from_macros(self):
-        pass
+        calories_from_macros = (4*self._protein_per_serving_grams)+(4*self._carbs_per_serving_grams)+(9*self._fats_per_serving_grams)
+        return int(round(calories_from_macros))      
+    
 
     def get_price_per_gram_protein(self):
-        pass
+        price_per_gram_protein = self.get_price()/self.get_protein_per_serving_grams()
+        return price_per_gram_protein
