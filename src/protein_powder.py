@@ -16,8 +16,8 @@ class ProteinPowder:
     
     #Class Constants (THESE DO NOT CHANGE PER OBJECT)
 
-    _AVALIBLE_BRANDS = {'Diesel','Biox', 'Raw', 'PVL','Ghost','Mutant'}
-    _AVALIBLE_FLAVOURS = {'Peanut Butter', 'Vanilla', 'Chocolate', 'Cookies & Cream'}
+    _AVAILABLE_BRANDS = {'Diesel','Biox', 'Raw', 'PVL','Ghost','Mutant'}
+    _AVAILABLE_FLAVOURS = {'Peanut Butter', 'Vanilla', 'Chocolate', 'Cookies & Cream'}
 
     #Initialization of the object
     
@@ -35,41 +35,57 @@ class ProteinPowder:
         _calories_per_serving: the amount of calories in a single serving, in kcals
         _price: The price of the tub of protein powder in $ CAD, defaults to 49.99 unless specifed (on sale)
         """
-        pass
+
+        self._brand  = _brand
+        self._flavour = _flavour
+        self._is_vegan = bool(_is_vegan)
+
+        self._protein_per_serving_grams = float(_protein_per_serving_grams)
+        self._carbs_per_serving_grams   = float(_carbs_per_serving_grams)
+        self._fats_per_serving_grams    = float(_fats_per_serving_grams)
+        self._calories_per_serving      = int(_calories_per_serving)
+
+        self._price = float(_price)
+
+        #creates name 
+        self._name  = f"{self._brand} {self._flavour}"
+
 
 #Accessors: See Test Plan and Specification Doc for details 
     def get_name(self):
-        pass
+        return self._name
 
     def get_brand(self): 
-        pass
+        return self._brand
 
     def get_flavour(self): 
-        pass
+        return self._flavour
 
     def get_price(self):
-        pass
+        return self._price
 
     def is_vegan(self):
-        pass
+        return self._is_vegan
 
     def get_protein_per_serving_grams(self):
-        pass
+        return self._protein_per_serving_grams
 
     def get_carbs_per_serving_grams(self):
-        pass
+        return self._carbs_per_serving_grams
 
     def get_fats_per_serving_grams(self):
-        pass
+        return self._fats_per_serving_grams
 
     def get_calories_per_serving(self):
-        pass
+        return self._calories_per_serving
 
-    def get__AVALIBLE_FLAVOURS(self):
-        pass
 
-    def get_AVALIBLE_BRANDS(self):
-        pass
+#returns copy of the class constants so that the user cannot change the original values
+    def get__AVAILABLE_FLAVOURS(self):
+        return set(self._AVAILABLE_FLAVOURS)
+
+    def get_AVAILABLE_BRANDS(self):
+        return set(self._AVAILABLE_BRANDS)
 
 
 
