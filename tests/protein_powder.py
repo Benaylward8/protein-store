@@ -41,6 +41,35 @@ class ProteinPowder:
         if _flavour not in self._AVAILABLE_FLAVOURS:
             raise ValueError("Flavour not in stock")
         
+        if _price < 0 : 
+            raise ValueError("Price Can not be a negative value")
+        
+        if not isinstance(_is_vegan, bool):
+            raise TypeError("_is_vegan must be entered as a bool")
+        
+        if _calories_per_serving <= 0 : 
+            raise ValueError("Calories must be greater than 1")
+        
+        if _protein_per_serving_grams <= 0 :
+            raise ValueError("protein must be greater than 1")
+        
+        if _carbs_per_serving_grams <= 0 :
+            raise ValueError("carbohydrates must be greater than 1")
+        
+        if _fats_per_serving_grams <= 0 :
+            raise ValueError("fats must be greater than 1")
+        
+        #checking to see if the macros add up to within 10% of the calories (allowing for nutrition label varience) 
+        macros = (_protein_per_serving_grams*4)+(_carbs_per_serving_grams*4)+(_fats_per_serving_grams*9)
+        lower_threshold = round(macros*0.9)
+        upper_threshold = round(macros*1.1)
+        
+        if _calories_per_serving > upper_threshold:
+            raise ValueError
+        
+        if _calories_per_serving < lower_threshold: 
+            raise ValueError
+
         self._brand  = _brand
         self._flavour = _flavour
         self._is_vegan = bool(_is_vegan)

@@ -42,9 +42,8 @@ class TestProteinPowder(unittest.TestCase):
 
 
     
-    def test_accessors_typical1(self):
+    def test_constructor_basic_accesors_typical(self):
         """"
-
     Constructor Test for Typical Scenario 
 
             Unit: __Init__
@@ -79,7 +78,7 @@ class TestProteinPowder(unittest.TestCase):
         self.assertEqual(typical1.get_calories_per_serving(), 121)
 
 
-    def test_invalid_brand(self): 
+    def test_constructor_invalid_brand(self): 
         """Tests constructor with a brand input that is not in _AVALIBLE_BRANDS
         Category: Error
         Input:  
@@ -98,8 +97,8 @@ class TestProteinPowder(unittest.TestCase):
             ProteinPowder("Rule1","Vanilla",False,25.0,2.0,1.5,121,49.99)
         
 
-    def test_invalid_flavour(self): 
-        """Tests constructor with a flavour input that is not in _AVALIBLE_FLAVOUR
+    def test_constructor_invalid_flavour(self): 
+        """Tests constructor with a flavour input that is not in _AVALIBLE_FLAVOURs
         Category: Error
         Input:  
                     _brand: "Diesel",
@@ -116,3 +115,100 @@ class TestProteinPowder(unittest.TestCase):
         with self.assertRaises(ValueError):
             ProteinPowder("Diesel","Strawberry",False,25.0,2.0,1.5,121,49.99)
 
+    def test_constructor_negative_price(self): 
+
+        """Tests constructor with a negative price input 
+        Category: Error
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: False,
+                    _protein_per_serving_grams: 25.0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 121
+                    _price: -42.98
+
+            Output: Raises ValueError
+            """
+        with self.assertRaises(ValueError):
+            ProteinPowder("Diesel","Peanut Butter",False,25.0,2.0,1.5,121,-42.98)
+
+
+    def test_constructor_is_vegan(self): 
+        
+        """Tests constructor with a string input for _is_vegan
+        Category: Error
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "No",
+                    _protein_per_serving_grams: 25.0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 121
+                    _price: 49.99
+
+            Output: Raises TypeError
+            """
+        with self.assertRaises(TypeError):
+            ProteinPowder("Diesel","Peanut Butter","No",25.0,2.0,1.5,121,49.99)
+
+    def test_constructor_total_calories_positive(self): 
+        """Tests constructor with a negative calories input 
+        Category: Error
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 25.0,
+                    _carbs_per_serving_grams: 2.0,
+                    _fats_per_serving_grams: 1.5,
+                    _calories_per_serving: 0
+                    _price: 49.99
+
+            Output: Raises ValueError
+            """
+        with self.assertRaises(ValueError):
+            ProteinPowder("Diesel","Peanut Butter",False,25.0,2.0,1.5,0,49.99)
+
+    def test_constructor_macros_positive(self): 
+        """Tests constructor with a negative proetin,carb,fat input 
+        Category: Error
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 0,
+                    _carbs_per_serving_grams: 0,
+                    _fats_per_serving_grams: 0,
+                    _calories_per_serving: 121
+                    _price: 49.99
+
+            Output: Raises ValueError
+            """
+        
+        with self.assertRaises(ValueError):
+            ProteinPowder("Diesel","Peanut Butter",False,0,0,0,121,49.99)
+
+    def test_constructor_macros_within_calories(self): 
+        """Tests constructor with a  proetin,carb,fat input that doesnt equal the calories inputted
+        Category: Error
+        Input:  
+                    _brand: "Diesel",
+                    _flavour:"Peanut Butter",
+                    _is_vegan: "False",
+                    _protein_per_serving_grams: 0,
+                    _carbs_per_serving_grams: 0,
+                    _fats_per_serving_grams: 0,
+                    _calories_per_serving: 121
+                    _price: 49.99
+
+            Output: Raises ValueError
+            """
+        with self.assertRaises(ValueError):
+            ProteinPowder("Diesel","Peanut Butter",False,1.0,12.0,1.0,250,49.99)
+            #These Macros are not within 10% of the calories 
+            #(4cals per g of protein, 4cals per. gram of carbs, 9cals per gram of fats)
+    
+    
