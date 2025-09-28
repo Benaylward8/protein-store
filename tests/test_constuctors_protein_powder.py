@@ -11,9 +11,6 @@
 import unittest
 from protein_powder import ProteinPowder
 
-def make_typical1():
-    return ProteinPowder("Diesel", "Peanut Butter", False, 25.0, 2.0, 1.5, 121, 49.99)
-
 class TestProteinPowderConstructor(unittest.TestCase):
 
 

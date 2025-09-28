@@ -126,28 +126,85 @@ class ProteinPowder:
 #Mutators: See Test Plan and Specification Doc for details 
 
     def set_brand(self, new_brand:str):
-        pass
+
+        if not isinstance(new_brand,str):
+            raise ValueError("Please enter a Brand")
+        
+        if new_brand not in self._AVAILABLE_BRANDS:
+            raise ValueError("brand not in stock")
+        
+        self._brand = new_brand
+        self._name = f"{self._brand} {self._flavour}"
 
     def set_flavour(self, new_flavour:str):
-        pass
 
-    def set_price(self, new_price:str):
-        pass
+        if not isinstance(new_flavour,str):
+            raise ValueError("Please enter a Flavour")
+        
+        if new_flavour not in self._AVAILABLE_FLAVOURS:
+            raise ValueError("Flavour not in stock")
+        
+        self._flavour = new_flavour
+        self._name = f"{self._brand} {self._flavour}"
+
+    def set_price(self, new_price:float):
+
+        if not isinstance(new_price, (int,float)):
+            raise TypeError("price entry must be a number")
+        
+        if new_price <0: 
+            raise ValueError("price must be above 0$")
+        
+        self._price = float(new_price)
 
     def set_is_vegan(self, flag:bool):
-        pass 
+        if not isinstance (flag, bool):
+            raise TypeError("_is_vegan must be a bool") 
+        self._is_vegan = flag
 
-    def set_protein_per_serving_grams(self, grams:float):
-        pass
+    def set_protein_per_serving_grams(self, grams_of_protein:float):
 
-    def set_carbs_per_serving_grams(self, grams:float):
-        pass
+        if not isinstance(grams_of_protein,(int, float) ):
+            raise TypeError("proteins value must be a valid number")
+        
+        if grams_of_protein <=0: 
+            raise ValueError("proteins must be greater than zero grams")
+        
+        self._protein_per_serving_grams = float(grams_of_protein)
 
-    def set_fats_per_serving_grams(self, grams:float):
-        pass
+    def set_carbs_per_serving_grams(self, grams_of_carbs:float):
+        if not isinstance(grams_of_carbs,(int, float) ):
+            raise TypeError("carbs value must be a valid number")
+        
+        if grams_of_carbs <=0: 
+            raise ValueError("carbs must be greater than zero grams")
+        
+        self._carbs_per_serving_grams = float(grams_of_carbs)
 
-    def set_calories_per_serving(self, kcal:int):
-        pass
+    def set_fats_per_serving_grams(self, grams_of_fats:float):
+        if not isinstance(grams_of_fats,(int, float) ):
+            raise TypeError("fats value must be a valid number")
+        
+        if grams_of_fats <=0: 
+            raise ValueError("fats must be greater than zero grams")
+        
+        self._fats_per_serving_grams = float(grams_of_fats)
+
+    def set_calories_per_serving(self, kcals:int):
+
+        if not isinstance(kcals, int):
+            raise TypeError("calories must be whole numbers")
+        
+        if kcals <=0:
+            raise ValueError("calories must be greater than 0kcals")
+        
+        macros = self.get_calories_from_macros()
+        upper = int(round(macros*1.1))
+        lower = int(round(macros*0.9))
+        if not (lower<= kcals <= upper):
+            raise ValueError("Calories must be within 10% of the macronutrient calories")
+        self._calories_per_serving = kcals
+
 
 #Calculated Accessors: See Test Plan and Specification Doc for details 
 
