@@ -52,19 +52,19 @@ class TestProteinPowderAccessors(unittest.TestCase):
         """
         typical1 = self.typical1
         typical1.set_brand("Mutant")
-        self.assertEqual(typical1.get_name, "Mutant Peanut Butter")
+        self.assertEqual(typical1.get_name(), "Mutant Peanut Butter")
 
     def test_get_name_after_set_flavour(self):
         """
         Unit: get_flavour
         Category: Typical 
         Input: set_flavour("Vanilla") 
-        Output: get_name() = "Mutant Vanilla"
+        Output: get_name() = "Diesel Vanilla"
         
         """
         typical1 = self.typical1
         typical1.set_flavour("Vanilla")
-        self.assertEqual(typical1.get_name, "Mutant Vanilla")
+        self.assertEqual(typical1.get_name(), "Diesel Vanilla")
 
 
 
