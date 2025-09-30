@@ -35,12 +35,12 @@ class TestProteinPowderAccessors(unittest.TestCase):
         self.assertEqual(typical1.get_brand(), "Diesel")
         self.assertEqual(typical1.get_flavour(), "Peanut Butter")
         self.assertEqual(typical1.get_name(), "Diesel Peanut Butter")
-        self.assertAlmostEqual(typical1.get_price(), 49.99)
         self.assertFalse(typical1.is_vegan())
         self.assertAlmostEqual(typical1.get_protein_per_serving_grams(), 25.0)
         self.assertAlmostEqual(typical1.get_carbs_per_serving_grams(), 2.0)
         self.assertAlmostEqual(typical1.get_fats_per_serving_grams(), 1.5)
         self.assertEqual(typical1.get_calories_per_serving(), 121)
+        self.assertAlmostEqual(typical1.get_price(), 49.99)
 
     def test_get_name_after_set_brand(self):
         """
