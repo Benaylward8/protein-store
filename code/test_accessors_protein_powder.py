@@ -21,8 +21,8 @@ class TestProteinPowderAccessors(unittest.TestCase):
 
     def test_basic_getters_typical(self):
         """
-        Unit: accessors
-        Category: Typical Scenarios
+        Unit: all accessors
+        Category: Typical 
         Input: typical_case scenario
         Output: getters return expeceted values
         
@@ -41,5 +41,32 @@ class TestProteinPowderAccessors(unittest.TestCase):
         self.assertAlmostEqual(typical1.get_carbs_per_serving_grams(), 2.0)
         self.assertAlmostEqual(typical1.get_fats_per_serving_grams(), 1.5)
         self.assertEqual(typical1.get_calories_per_serving(), 121)
+
+    def test_get_name_after_set_brand(self):
+        """
+        Unit: get_brand
+        Category: Typical 
+        Input: set_brand("Mutant")
+        Output: get_name() = "Mutant Peanut Butter"
+        
+        """
+        typical1 = self.typical1
+        typical1.set_brand("Mutant")
+        self.assertEqual(typical1.get_name, "Mutant Peanut Butter")
+
+    def test_get_name_after_set_flavour(self):
+        """
+        Unit: get_flavour
+        Category: Typical 
+        Input: set_flavour("Vanilla") 
+        Output: get_name() = "Mutant Vanilla"
+        
+        """
+        typical1 = self.typical1
+        typical1.set_flavour("Vanilla")
+        self.assertEqual(typical1.get_name, "Mutant Vanilla")
+
+
+
 
 
