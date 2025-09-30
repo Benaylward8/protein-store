@@ -1,6 +1,3 @@
 # Protein Store
-
-## Docs Folder
-
-- [Assignment 1 Specification and Test Plan](docs/Assignment1_Spec.docx)
-
+#Class Overview
+ProteinPowder is a class that simulates a tub of protein powder for an online store. Each object that is created form the class stores a derived name, vegan flag, nutrition values per serving, a brand, and a flavour. Construction confirms that the calories inputted fall within 10% of the calories calculated from the macronutrients inputted following a 4,4,9 rule (4kcals per gram protein, 4kcals per gram carb, 9kcals per gram fat). Construction also restricts any negative values for protein, carbs, fats, calories, and price inputs. Construction confirms that the brand and flavour strings inputted, belong to the class constants representing the brands and flavours in stock. The class has both simple accessors and two calculated accessors to compute the price per gram of protein in each tub, and the total calories per serving using the macro nutrient data per serving. Mutators are utilized to re-validate inputs and keep constancy with constraints and ensures any mutually dependent attributes such as the name of the protein powder act accordingly. Overall, the design of this class has clear data representation, input validation through unit testing, and computed properties suitable for the online store, validated through test driven implementation.
